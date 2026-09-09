@@ -1,98 +1,190 @@
-html
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>_uhh AI - Maintenance Mode</title>
-    <!-- Tailwind CSS CDN -->
+    <title>_uhh AI Assistant - Shutdown Notice</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,400&family=Cinzel:wght@600&family=Courier+Prime:wght@700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        serif1: ['Playfair Display', 'serif'],
+                        serif2: ['Cinzel', 'serif'],
+                        typewriter: ['Courier Prime', 'monospace'],
+                        grotesk: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#070a12',
+                        cardBg: '#0f172a',
+                        accentIndigo: '#6366f1',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            background-color: #070a12;
+            background-image: radial-gradient(circle at 50% 10%, #111e38 0%, #070a12 90%);
+            min-height: 100vh;
         }
-        .mono-font {
-            font-family: 'JetBrains Mono', monospace;
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.85; transform: scale(0.98); }
+        ::-webkit-scrollbar-track {
+            background: #070a12;
         }
-        .animate-pulse-slow {
-            animation: pulse-slow 4s infinite ease-in-out;
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-        .animate-float {
-            animation: float 3s infinite ease-in-out;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
         }
     </style>
 </head>
-<body class="bg-[#0c1017] text-slate-100 min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 overflow-hidden relative">
+<body class="text-slate-200 font-sans antialiased flex flex-col items-center justify-center p-4 sm:p-6 min-h-screen">
 
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293d15_1px,transparent_1px),linear-gradient(to_bottom,#1f293d15_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none"></div>
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
-
-    <main class="w-full max-w-lg z-10">
-        <div class="bg-[#121824]/90 backdrop-blur-xl border border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-8 text-center relative overflow-hidden animate-pulse-slow">
-            
-            <!-- Top badge mimicking the app header -->
-            <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-800/80">
-                <div class="flex items-center space-x-2">
-                    <span class="bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 text-xs font-bold px-2.5 py-1 rounded-lg mono-font">_uhh</span>
-                    <span class="text-xs text-slate-400 font-medium">AI Assistant</span>
-                </div>
-                <div class="flex items-center space-x-1.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping"></span>
-                    <span class="text-xs text-amber-400 font-mono font-semibold">MAINTENANCE</span>
-                </div>
+    <main class="w-full max-w-xl bg-cardBg/95 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/80 relative overflow-hidden transition-all duration-300">
+        
+        <!-- Top Status Bar -->
+        <div class="flex items-center justify-between pb-6 border-b border-slate-800/80 mb-6">
+            <div class="flex items-center space-x-3">
+                <span class="px-3 py-1 bg-indigo-600/20 text-indigo-400 font-mono font-semibold text-xs rounded-full border border-indigo-500/30">_uhh</span>
+                <span class="text-slate-400 font-medium text-sm tracking-wide">AI Assistant</span>
             </div>
-
-            <!-- Animated Icon -->
-            <div class="mb-6 flex justify-center">
-                <div class="w-20 h-20 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-3xl shadow-lg animate-float">
-                    ⚠️
-                </div>
+            <div class="flex items-center space-x-2 bg-red-950/40 px-3 py-1 rounded-full border border-red-500/20">
+                <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <span class="text-xs font-bold tracking-widest text-red-400 uppercase">OFFLINE</span>
             </div>
-
-            <!-- Main Error Header -->
-            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-3">
-                OPPSIE!
-            </h1>
-
-            <!-- Message body -->
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 px-2">
-                <span class="font-mono text-indigo-400 font-bold">_uhh</span> is undergoing maintenance with a response error right now. We'll be back shortly.
-            </p>
-
-            <!-- Timestamp Box -->
-            <div class="bg-[#1a2234] border border-slate-800 rounded-2xl p-4 mb-6 text-left space-y-1.5">
-                <div class="flex items-center justify-between text-xs text-slate-400 font-mono">
-                    <span>INCIDENT CODE:</span>
-                    <span class="text-slate-200">ERR_RESPONSE_FAILURE</span>
-                </div>
-                <div class="flex items-center justify-between text-xs text-slate-400 font-mono">
-                    <span>DOWN SINCE:</span>
-                    <span class="text-amber-400 font-bold">Sep 7, 2026 at 9:13</span>
-                </div>
-            </div>
-
-            <!-- Action buttons -->
-            <div class="space-y-3">
-                <a href="https://thesigma782-byte.github.io/Plunger_teams-about/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.99] transition-all duration-200 rounded-xl font-semibold text-sm text-white shadow-lg shadow-indigo-600/30 flex items-center justify-center space-x-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    <span>Check our website pls</span>
-                </a>
-            </div>
-
         </div>
+
+        <div class="flex flex-col items-center text-center my-4">
+            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-3xl mb-4 shadow-inner">
+                ⚠️
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">SERVICE TERMINATION</h1>
+            <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-md">
+                Official discontinuation notice for <span class="text-indigo-300 font-medium">_uhh</span>.
+            </p>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800/90 rounded-2xl p-4 my-6 space-y-3 font-mono text-xs sm:text-sm">
+            <div class="flex justify-between items-center text-slate-400 border-b border-slate-800/50 pb-2">
+                <span class="text-slate-500">STATUS:</span>
+                <span class="text-red-400 font-semibold">SERVERS DECOMMISSIONED</span>
+            </div>
+            <div class="flex justify-between items-center text-slate-400 border-b border-slate-800/50 pb-2">
+                <span class="text-slate-500">SHUTDOWN TIME:</span>
+                <span class="text-slate-200">Sep 8, 2026 at 7:43 AM</span>
+            </div>
+            <div class="flex justify-between items-center text-slate-400">
+                <span class="text-slate-500">ACTIVE LIFESPAN:</span>
+                <span id="cyclingDate" class="text-indigo-300 transition-all duration-300 font-semibold">March/April 2026 – September 8, 2026</span>
+            </div>
+        </div>
+
+        <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed bg-slate-900/50 p-5 rounded-2xl border border-slate-800/60">
+            <p>
+                Dear users of <strong class="text-white font-semibold">_uhh</strong>,
+            </p>
+            <p>
+                It’s been a great run, but all good things must come to an end. We are officially shutting down the <span class="text-indigo-300 font-medium">_uhh</span> AI assistant.
+            </p>
+            <p>
+                We at <strong class="text-white font-semibold">Plunger Teams</strong> are very sorry for this inconvenience, but unfortunately, keeping up with maintenance and bug fixing has become too much for a one-man operation. Following the stubborn bug on <strong class="text-amber-400 font-medium">September 7, 2026</strong>, dealing with the workload, time consumption, and overall strain has just become too difficult to manage alone.
+            </p>
+            <p>
+                As of <strong class="text-white font-medium">September 8, 2026, at 7:43 AM</strong>, all servers are officially shut down, and this website has been permanently replaced with this screen.
+            </p>
+            <p>
+                It’s been an incredible 5 months since <span class="text-indigo-300 font-medium">_uhh</span> first launched back around March and April of 2026. We’ve thoroughly enjoyed building and running this project, and we truly hope you enjoyed using it. Thank you for such a long, fun journey.
+            </p>
+        </div>
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <button onclick="copyMessage()" class="flex-1 py-3 px-4 bg-slate-800 hover:bg-slate-700 active:bg-slate-900 text-slate-200 font-medium text-sm rounded-xl border border-slate-700/80 transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer shadow-md">
+                <span>📋</span>
+                <span>Copy Announcement</span>
+            </button>
+            <a href="https://thesigma782-byte.github.io/Plunger_teams-about/" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 font-medium text-sm rounded-xl border border-indigo-500/30 transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer text-center">
+                <span>🌐</span>
+                <span>Plunger Teams Site</span>
+            </a>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-slate-800/80 text-center space-y-4">
+            <div class="text-slate-400 text-sm">
+                <p class="mb-1">Thank you everyone,</p>
+                <p class="font-bold text-white text-base">Sincerely,</p>
+                <p class="font-mono text-indigo-400 font-semibold mt-1">Plunger Teams</p>
+            </div>
+
+            <div class="pt-2">
+                <p class="text-xs font-semibold tracking-wider text-slate-500 uppercase mb-3">Special thanks to the tools and platforms that made this possible:</p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="px-2.5 py-1 bg-slate-800/60 text-slate-400 text-xs rounded-lg border border-slate-700/50 font-mono">CodePen</span>
+                    <span class="px-2.5 py-1 bg-slate-800/60 text-slate-400 text-xs rounded-lg border border-slate-700/50 font-mono">Netlify</span>
+                    <span class="px-2.5 py-1 bg-slate-800/60 text-slate-400 text-xs rounded-lg border border-slate-700/50 font-mono">GitHub</span>
+                    <span class="px-2.5 py-1 bg-indigo-950/40 text-indigo-300 text-xs rounded-lg border border-indigo-500/30 font-mono">Gemini</span>
+                </div>
+            </div>
+        </div>
+
     </main>
 
+    <div id="msgModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50 transition-opacity">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
+            <div class="text-4xl">📋</div>
+            <h3 class="text-lg font-bold text-white">Copied to Clipboard!</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">The official shutdown announcement has been copied to your clipboard.</p>
+            <button onclick="closeModal()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm rounded-xl transition cursor-pointer">Got it</button>
+        </div>
+    </div>
+
     <script>
-        // System status refresh handler
+        // Array of 5 different fonts to alternate every 1 second
+        const fontClasses = ['font-mono', 'font-serif1', 'font-serif2', 'font-typewriter', 'font-grotesk'];
+        let currentFontIndex = 0;
+
+        setInterval(() => {
+            const dateElement = document.getElementById('cyclingDate');
+            if (dateElement) {
+                dateElement.classList.remove(fontClasses[currentFontIndex]);
+                currentFontIndex = (currentFontIndex + 1) % fontClasses.length;
+                dateElement.classList.add(fontClasses[currentFontIndex]);
+            }
+        }, 1000);
+
+        function copyMessage() {
+            const fullText = `Announcement\n\nDear users of _uhh,\n\nIt’s been a great run, but all good things must come to an end. We are officially shutting down the _uhh AI assistant.\n\nWe at Plunger Teams are very sorry for this inconvenience, but unfortunately, keeping up with maintenance and bug fixing has become too much for a one-man operation. Following the stubborn bug on September 7, 2026, dealing with the workload, time consumption, and overall strain has just become too difficult to manage alone.\n\nAs of September 8, 2026, at 7:43 AM, all servers are officially shut down, and this website has been permanently replaced with this screen.\n\nIt’s been an incredible 5 months since _uhh first launched back around March and April of 2026. We’ve thoroughly enjoyed building and running this project, and we truly hope you enjoyed using it. Thank you for such a long, fun journey.\n\nThank you everyone,\n\nSincerely,\n\nPlunger Teams\n\n_uhh\nMarch/April 2026 – September 8, 2026\n\nSpecial thanks to the tools and platforms that made this possible: CodePen, Netlify, GitHub, and Gemini.\n\nPlunger Teams Official Site: https://thesigma782-byte.github.io/Plunger_teams-about/`;
+
+            const textarea = document.createElement('textarea');
+            textarea.value = fullText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                document.getElementById('msgModal').classList.remove('hidden');
+                document.getElementById('msgModal').classList.add('flex');
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function closeModal() {
+            document.getElementById('msgModal').classList.remove('flex');
+            document.getElementById('msgModal').classList.add('hidden');
+        }
     </script>
 </body>
 </html>
+```
